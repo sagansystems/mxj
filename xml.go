@@ -259,11 +259,13 @@ func DisableTrimWhiteSpace(b ...bool) {
 // 25jun16: Allow user to specify the "prefix" character for XML attribute key labels.
 // We do this by replacing '`' constant with attrPrefix var, replacing useHyphen with attrPrefix = "",
 // and adding a SetAttrPrefix(s string) function.
-
-var attrPrefix string = `-` // the default
+//
+// 2021-10-06: Changed default attrPrefix to '_' due to SetAttrPrefix causing
+// race conditions when mxj is used in parallel.
+var attrPrefix string = `_` // the default
 var lenAttrPrefix int = 1   // the default
 
-// SetAttrPrefix changes the default, "-", to the specified value, s.
+// SetAttrPrefix changes the default, "_", to the specified value, s.
 // SetAttrPrefix("") is the same as PrependAttrWithHyphen(false).
 // (Not applicable for NewMapXmlSeq(), mv.XmlSeq(), etc.)
 func SetAttrPrefix(s string) {

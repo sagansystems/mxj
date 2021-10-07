@@ -20,19 +20,19 @@ func TestPrefixDefault(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	vals, err := m.ValuesForKey("-attr1")
+	vals, err := m.ValuesForKey("_attr1")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(vals) != 2 {
-		t.Fatal("didn't get 2 -attr1 vals", len(vals))
+		t.Fatal("didn't get 2 _attr1 vals", len(vals))
 	}
-	vals, err = m.ValuesForKey("-attr2")
+	vals, err = m.ValuesForKey("_attr2")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(vals) != 2 {
-		t.Fatal("didn't get 2 -attr2 vals", len(vals))
+		t.Fatal("didn't get 2 _attr2 vals", len(vals))
 	}
 }
 
@@ -146,4 +146,3 @@ func TestMarshalPrefixUnderscore(t *testing.T) {
 	}
 	fmt.Println(string(x))
 }
-
